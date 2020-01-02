@@ -1,0 +1,10 @@
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\bin\Release\Snake_v1.2.exe.config
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\bin\Release\Snake_v1.2.exe
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\bin\Release\Snake_v1.2.pdb
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Release\Snake_v1.2.csprojAssemblyReference.cache
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Release\Snake_v1._2.GameUI.resources
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Release\Snake_v1._2.Properties.Resources.resources
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Release\Snake_v1._2.Setup.resources
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Release\Snake_v1.2.csproj.GenerateResource.cache
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Release\Snake_v1.2.exe
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Release\Snake_v1.2.pdb
