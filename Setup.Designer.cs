@@ -109,6 +109,7 @@
             this.Controls.Add(this.Start);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.Rank);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Setup";
             this.Text = "Setup";

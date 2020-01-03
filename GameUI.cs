@@ -271,10 +271,10 @@ namespace Snake_v1._2
             {
                 if (!is_pause)
                 {
-                    map.DrawMap(graphics);
-                    snake.DrawSnake(graphics);
-                    hunter.DrawHunter(graphics);
-                    props.DrawProps(graphics);
+                    map.Draw(graphics);
+                    snake.Draw(graphics);
+                    hunter.Draw(graphics);
+                    props.Draw(graphics);
                     graphics.DrawString(tip_str, this.Font, Brushes.Black, 0, (column + 3) * 10);
                 }
                 else GamePauseUI(graphics);

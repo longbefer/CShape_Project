@@ -91,7 +91,7 @@ namespace Snake_v1._2
       //frozen()猎人原地冻结，
       //道具出现的地点（一开局随机产生几个道具，每个道具到一定时间消失）
       //之后会再次间断一定时间产生
-    class Props
+    class Props:IDraw
     {
         //字段
         private readonly List<Prop> props;
@@ -132,7 +132,7 @@ namespace Snake_v1._2
         /// 绘制道具
         /// </summary>
         /// <param name="g"></param>
-        public void DrawProps(Graphics g)
+        public bool Draw(Graphics g)
         {
             for (int i = 0; i < props.Count; i++)
                 if (props[i].Display(current_time))//是否要显示
@@ -141,6 +141,7 @@ namespace Snake_v1._2
                         props[i].location.Y * props[i].size,
                         props[i].size, props[i].size);//建议将此部分放入Prop中
                 else props.RemoveAt(i);
+            return true;
         }
         /// <summary>
         /// 判断小蛇是否吃到了道具

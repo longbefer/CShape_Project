@@ -7,21 +7,33 @@ using System.Threading.Tasks;
 
 namespace Snake_v1._2
 {
-    class Body
+    class Body: IMove,IDraw
     {
         public Body() { location = new Point(0, 0); color = Brushes.Gold; }
         public Body(Point point) { location = point; color = Brushes.Gold; }
         public Point location;
         public Brush color;
+        public int size = 10;
+
+        virtual public bool Draw(Graphics g)
+        {
+            g.FillRectangle(color, this.location.X, this.location.Y, this.size, this.size);
+            return true;
+        }
+
+        virtual public void Move()
+        {
+            throw new Exception("this is a virtual class");
+        }
         //public Image image;
     }
 
-    class Snake//小蛇的操作实现
+    class Snake:Body//小蛇的操作实现
     {
         //数据成员
         public int life;//生命值
         public List<Body> Body;//身体
-        public int size = 10;//蛇身体大小
+        //public int size = 10;//蛇身体大小
         public Map map;
 
         public double speed = 2.0;
@@ -68,7 +80,7 @@ namespace Snake_v1._2
         /// <summary>
         /// 移动小蛇
         /// </summary>
-        public void Move()
+        public override void Move()
         {
             if (!HitWall())
             {
@@ -88,11 +100,11 @@ namespace Snake_v1._2
         /// </summary>
         /// <param name="g"></param>
         /// <returns></returns>
-        public bool DrawSnake(Graphics g)
+        public override bool Draw(Graphics g)
         {
             for (int i = Body.Count - 1; i >= 0; i--)
-                g.FillEllipse(Body[i].color, Body[i].location.X * size, Body[i].location.Y * size, size, size);
-                //g.FillRectangle(Body[i].color, Body[i].location.X * size, Body[i].location.Y * size, size, size);
+                //g.FillEllipse(Body[i].color, Body[i].location.X * size, Body[i].location.Y * size, size, size);
+                g.FillRectangle(Body[i].color, Body[i].location.X * size, Body[i].location.Y * size, size, size);
             return true;
         }
 

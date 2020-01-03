@@ -11,7 +11,7 @@ namespace Snake_v1._2
     /// <summary>
     /// Map用于生成随机地图（使用普利姆算法）并给出迷宫结果（使用栈）
     /// </summary>
-    class Map
+    class Map:IDraw
     {
         //特殊宏定义
         public readonly static int MAXSIZE = 100;
@@ -224,7 +224,7 @@ namespace Snake_v1._2
         /// </summary>
         /// <param name="g">绘图</param>
         /// <returns>创建成功</returns>
-        public bool DrawMap(Graphics g)
+        public bool Draw(Graphics g)
         {
             if (maze == null)
                 throw new Exception("Please Init Map, Try to CreateMap().");

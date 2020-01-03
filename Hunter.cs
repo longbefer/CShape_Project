@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Snake_v1._2
 {
-    class Hunter
+    class Hunter:Body
     {
-        public Point location;//猎人位置
+        //public Point location;//猎人位置
         //public Point snake_location;//蛇的位置
         public int current_time = 0;
         public int star_times = 15;//猎人开始时间
-        public Brush hunter_color;//猎人颜色
-        public int size = 10;
+        //public Brush hunter_color;//猎人颜色
+        //public int size = 10;
         public bool is_frozen = false;
         public int vision_area = 10;//猎人可视范围，在范围内则标记
 
@@ -34,7 +34,7 @@ namespace Snake_v1._2
         public Hunter()
         {
             location = new Point(0, 0);
-            hunter_color = Brushes.Black;
+            color = Brushes.Black;
         }
         /// <summary>
         /// 地图，猎人必须有一份地图
@@ -45,11 +45,11 @@ namespace Snake_v1._2
         /// 绘制猎人
         /// </summary>
         /// <returns>绘制结果</returns>
-        public bool DrawHunter(Graphics g)
+        public override bool Draw(Graphics g)
         {
             if (IsStart())//猎人开始行动
             {
-                g.FillRectangle(hunter_color, location.X * size, location.Y * size, size, size);
+                g.FillRectangle(color, location.X * size, location.Y * size, size, size);
 
                 //for test
                 g.DrawEllipse(new Pen(Color.Black), (location.X - vision_area) * size + size / 2,
@@ -57,7 +57,7 @@ namespace Snake_v1._2
                     2 * vision_area * size, 2 * vision_area * size);
 
                 //for test，黑点标记猎人即将前往的点，遇到小蛇时将会标记小蛇
-                g.FillRectangle(hunter_color, end_point.X * size + 2, end_point.Y * size + 2, 5, 5);
+                g.FillRectangle(color, end_point.X * size + 2, end_point.Y * size + 2, 5, 5);
             }
             return true;
         }
