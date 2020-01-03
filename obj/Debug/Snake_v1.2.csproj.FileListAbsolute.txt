@@ -28,3 +28,4 @@ E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Debug\Snake_v1._2.Setup.re
 E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Debug\Snake_v1.2.csproj.GenerateResource.cache
 E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Debug\Snake_v1.2.exe
 E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Debug\Snake_v1.2.pdb
+E:\HomeWork\VisualStudio\C#\Snake_v1.3\Snake_v1.2\obj\Debug\Snake_v1._2.Language.resources

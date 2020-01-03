@@ -22,6 +22,7 @@ namespace Snake_v1._2
         private Point _start, _end;//开始点和结束点
         public static int row, column;//横列和纵列，故row代表y，column代表x
         public int size = 10;//地图size
+        public bool show_map = true;//显示地图
         public bool is_show_way = false;//显示通关路径
         //（属性）
         /// <summary>
@@ -231,7 +232,7 @@ namespace Snake_v1._2
             for (int i = 0; i <= row + 1; i++)//y
                 for (int j = 0; j <= column + 1; j++)//x
                 {
-                    if (maze[j][i] == wall)
+                    if (maze[j][i] == wall && show_map)
                         g.FillRectangle(new SolidBrush(MapColor), j * size, i * size, size, size);
                     else if (is_show_way && maze_way[j][i] == access)
                         g.FillRectangle(Brushes.Red, j * 10 + 2, i * 10 + 2, 5, 5);

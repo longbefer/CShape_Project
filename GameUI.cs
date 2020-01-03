@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,11 +16,13 @@ namespace Snake_v1._2
     delegate void PropsEvent(Things things);
     public partial class GameUI : Form
     {
+        //翻译文件
+        readonly ResourceManager langRec = new ResourceManager("Snake_v1._2.Language", typeof(GameUI).Assembly);
         //资源列表
         private readonly Color[] map_color = { Color.OrangeRed, Color.DarkOrange, Color.Chocolate, Color.Brown };
         private readonly Image[] bk_image = { Properties.Resources.CN,Properties.Resources.AJ,
             Properties.Resources.IN, Properties.Resources.BL};
-        private readonly SoundPlayer bk_music = new System.Media.SoundPlayer("..\\..\\Resource\\Soundroll - Trouble Maker.wav");
+        private readonly SoundPlayer bk_music = new System.Media.SoundPlayer(Properties.Resources.music_position);
         //设置资源
         private int current_color = 0;//改变地图颜色
         private int pic_num = 0;//改变bk_image
@@ -45,7 +48,7 @@ namespace Snake_v1._2
         private double hunter_start_min = 10, hunter_start_max = 15;//猎人开始时间上下限
         private int hunter_search_area = 5;
         private int add_life_times = 0;//用于过关加心的判断
-        private string tip_str = "帮助小蛇到达终点吧。。。";
+        private string tip_str = Properties.Resources.help_snake_go_to_the_end;
 
         public static int game_money = 0;//金币
         public static int game_level = 1;//等级
@@ -191,7 +194,7 @@ namespace Snake_v1._2
             //重新初始化文字
             game_money += 100;
             game_level++;
-            tip_str = "帮助小蛇到达终点吧。。。";
+            tip_str = Properties.Resources.help_snake_go_to_the_end;
 
             InitGameComponent();
         }
@@ -289,11 +292,13 @@ namespace Snake_v1._2
         {
             TimerStop();
             hunter.is_frozen = true;
+            map.show_map = false;
             //is_pause = true;
-            if (MessageBox.Show(this, "猎人捉到你了", "游戏提示", MessageBoxButtons.OK, 0) == DialogResult.OK)
+            if (MessageBox.Show(this, langRec.GetString("hunter_catch_tip"), langRec.GetString("tip_app"), MessageBoxButtons.OK, 0) == DialogResult.OK)
             {
                 snake.life--;
                 hunter_frozen_time = game_time;
+                map.show_map = true;
                 if (is_hell_mode)//地狱模式，即返回原点
                 {
                     snake.SetHead(map.Start);
@@ -309,9 +314,9 @@ namespace Snake_v1._2
         private void GameOver(Graphics g)
         {
             Font font = new Font(this.Font, FontStyle.Bold);
-            g.DrawString("游戏结束", font, Brushes.Red, new Point((int)(row * 4.0), 40));
-            g.DrawString("按回车键重新开始", font, Brushes.Red, new Point((int)(row * 3.5), 60));
-            g.DrawString("按ESC键退出游戏", font, Brushes.Red, new Point((int)(row * 3.5), 80));
+            g.DrawString(langRec.GetString("game_over_app"), font, Brushes.Red, new Point((int)(row * 4.0), 40));
+            g.DrawString(langRec.GetString("enter_restart_app"), font, Brushes.Red, new Point((int)(row * 3.5), 60));
+            g.DrawString(langRec.GetString("esc_exit_app"), font, Brushes.Red, new Point((int)(row * 3.5), 80));
             TimerStop();
             //文件写入操作
             WriteFile();
@@ -322,8 +327,8 @@ namespace Snake_v1._2
         /// <param name="g"></param>
         private void GamePauseUI(Graphics g)
         {
-            g.DrawString("暂停", this.Font, Brushes.Red, new Point((int)(row * 4.5), 40));
-            g.DrawString("按空格键继续游戏", this.Font, Brushes.Black, new Point((int)(row * 3.5), 60));
+            g.DrawString(langRec.GetString("pause_app"), this.Font, Brushes.Red, new Point((int)(row * 4.5), 40));
+            g.DrawString(langRec.GetString("blank_to_start_app"), this.Font, Brushes.Black, new Point((int)(row * 3.5), 60));
         }
 
         /// <summary>
@@ -336,9 +341,9 @@ namespace Snake_v1._2
             //    heart += "♥";//除了重新添加一个，如何改变成红色？
             //this.life_label.Text = heart;
             this.life_label.Invalidate();
-            this.money_label.Text = "金币： " + game_money;
-            this.time_label.Text = "用时： " + system_time;
-            this.level_label.Text = "等级： " + game_level;
+            this.money_label.Text = langRec.GetString("gold_props") + game_money;
+            this.time_label.Text = langRec.GetString("time_props") + system_time;
+            this.level_label.Text = langRec.GetString("level_props") + game_level;
         }
         /// <summary>
         /// 绘制生命值部分
@@ -348,7 +353,7 @@ namespace Snake_v1._2
         private void OnLifeDraw(object sender, PaintEventArgs e)
         {
             life_label.Text = "                ";
-            string str = "生命值： ";
+            string str = langRec.GetString("life_props");
             string heart = "        ";
             for (int i = 0; i < snake.life; i++)
                 heart += "♥";
@@ -365,11 +370,11 @@ namespace Snake_v1._2
         {
             switch (things)
             {
-                case Things.Bomb: tip_str = "炸弹，猎人将返回原点。"; break;
-                case Things.Find: tip_str = "寻路，帮助小蛇到达终点。"; break;
-                case Things.Frozen: tip_str = "冰冻，猎人将冰冻一定时间。"; break;
-                case Things.Gold: tip_str = "宝藏，小蛇将获得金币。"; break;
-                default: tip_str = "帮助小蛇到达终点吧。。。"; break;
+                case Things.Bomb: tip_str = Properties.Resources.things_bomb; break;
+                case Things.Find: tip_str = Properties.Resources.things_findway; break;
+                case Things.Frozen: tip_str = Properties.Resources.things_frozen; break;
+                case Things.Gold: tip_str = Properties.Resources.things_gold; break;
+                default: tip_str = Properties.Resources.help_snake_go_to_the_end; break;
             }
         }
 

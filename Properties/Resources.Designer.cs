@@ -131,6 +131,15 @@ namespace Snake_v1._2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 帮助小蛇到达终点吧。。。 的本地化字符串。
+        /// </summary>
+        internal static string help_snake_go_to_the_end {
+            get {
+                return ResourceManager.GetString("help_snake_go_to_the_end", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap IN {
@@ -141,11 +150,56 @@ namespace Snake_v1._2.Properties {
         }
         
         /// <summary>
+        ///   查找类似 ..\\..\\Resource\\Soundroll - Trouble Maker.wav 的本地化字符串。
+        /// </summary>
+        internal static string music_position {
+            get {
+                return ResourceManager.GetString("music_position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream Soundroll___Trouble_Maker {
             get {
                 return ResourceManager.GetStream("Soundroll___Trouble_Maker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 炸弹，猎人将返回原点。 的本地化字符串。
+        /// </summary>
+        internal static string things_bomb {
+            get {
+                return ResourceManager.GetString("things_bomb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 寻路，帮助小蛇到达终点。 的本地化字符串。
+        /// </summary>
+        internal static string things_findway {
+            get {
+                return ResourceManager.GetString("things_findway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 冰冻，猎人将冰冻一定时间。 的本地化字符串。
+        /// </summary>
+        internal static string things_frozen {
+            get {
+                return ResourceManager.GetString("things_frozen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 宝藏，小蛇将获得金币。 的本地化字符串。
+        /// </summary>
+        internal static string things_gold {
+            get {
+                return ResourceManager.GetString("things_gold", resourceCulture);
             }
         }
     }

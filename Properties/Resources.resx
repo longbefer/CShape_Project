@@ -139,10 +139,34 @@
   <data name="END_AN" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\END_AN.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="help_snake_go_to_the_end" xml:space="preserve">
+    <value>帮助小蛇到达终点吧。。。</value>
+    <comment>初始文本</comment>
+  </data>
   <data name="IN" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\IN.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="music_position" xml:space="preserve">
+    <value>..\\..\\Resource\\Soundroll - Trouble Maker.wav</value>
+    <comment>音乐文件位置</comment>
+  </data>
   <data name="Soundroll___Trouble_Maker" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\Soundroll - Trouble Maker.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="things_bomb" xml:space="preserve">
+    <value>炸弹，猎人将返回原点。</value>
+    <comment>道具炸弹</comment>
+  </data>
+  <data name="things_findway" xml:space="preserve">
+    <value>寻路，帮助小蛇到达终点。</value>
+    <comment>道具寻路</comment>
+  </data>
+  <data name="things_frozen" xml:space="preserve">
+    <value>冰冻，猎人将冰冻一定时间。</value>
+    <comment>道具冰冻</comment>
+  </data>
+  <data name="things_gold" xml:space="preserve">
+    <value>宝藏，小蛇将获得金币。</value>
+    <comment>道具金币</comment>
   </data>
 </root>

@@ -91,7 +91,7 @@ namespace Snake_v1._2
             // menu_start
             // 
             this.menu_start.Name = "menu_start";
-            this.menu_start.Size = new System.Drawing.Size(270, 34);
+            this.menu_start.Size = new System.Drawing.Size(209, 34);
             this.menu_start.Text = "开始游戏 (&S)";
             this.menu_start.Click += new System.EventHandler(this.OnStartClick);
             // 
@@ -102,7 +102,7 @@ namespace Snake_v1._2
             this.level_usually,
             this.level_different});
             this.menu_level.Name = "menu_level";
-            this.menu_level.Size = new System.Drawing.Size(270, 34);
+            this.menu_level.Size = new System.Drawing.Size(209, 34);
             this.menu_level.Text = "等级 (&L)";
             // 
             // level_easy
@@ -137,7 +137,7 @@ namespace Snake_v1._2
             this.setting_game,
             this.setting_music});
             this.menu_setting.Name = "menu_setting";
-            this.menu_setting.Size = new System.Drawing.Size(270, 34);
+            this.menu_setting.Size = new System.Drawing.Size(209, 34);
             this.menu_setting.Text = "设置 (&T)";
             // 
             // setting_game
@@ -177,7 +177,7 @@ namespace Snake_v1._2
             // menu_exit
             // 
             this.menu_exit.Name = "menu_exit";
-            this.menu_exit.Size = new System.Drawing.Size(270, 34);
+            this.menu_exit.Size = new System.Drawing.Size(209, 34);
             this.menu_exit.Text = "退出游戏 (&E)";
             this.menu_exit.Click += new System.EventHandler(this.OnExitGameClick);
             // 
@@ -192,7 +192,7 @@ namespace Snake_v1._2
             // menu_member
             // 
             this.menu_member.Name = "menu_member";
-            this.menu_member.Size = new System.Drawing.Size(270, 34);
+            this.menu_member.Size = new System.Drawing.Size(181, 34);
             this.menu_member.Text = "成员 (&M)";
             this.menu_member.Click += new System.EventHandler(this.OnMemberClick);
             // 
@@ -286,6 +286,8 @@ namespace Snake_v1._2
             this.Controls.Add(this.menu);
             this.Controls.Add(this.game_pic);
             this.MainMenuStrip = this.menu;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GameUI";
             this.Text = "贪吃蛇—瑞奇的逃亡之旅";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnGameKeyDown);
@@ -305,7 +307,7 @@ namespace Snake_v1._2
 
         private void OnStartClick(object sender, EventArgs e)
         {
-            if (MessageBox.Show("将会重置游戏，确认继续？", "游戏提示", MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
+            if (MessageBox.Show(langRec.GetString("restart_unsafe_go"), langRec.GetString("tip_app"), MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
             {
                 InitGame();
                 InitGameComponent();
@@ -315,7 +317,7 @@ namespace Snake_v1._2
         private void OnLevelEasyClick(object sender, EventArgs e)
         {
             if (level_easy.Checked &&
-                MessageBox.Show("将会重置游戏，且当前记录不会保存，确认继续？", "游戏提示", MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
+                MessageBox.Show(langRec.GetString("restart_unsafe_go"), langRec.GetString("tip_app"), MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
             {
                 if (level_different.Checked)
                     level_different.Checked = false;
@@ -340,7 +342,7 @@ namespace Snake_v1._2
         private void OnLevelUsuallyClick(object sender, EventArgs e)
         {
             if (level_usually.Checked &&
-                MessageBox.Show("将会重置游戏，且当前记录不会保存，确认继续？", "游戏提示", MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
+                MessageBox.Show(langRec.GetString("restart_unsafe_go"), langRec.GetString("tip_app"), MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
             {
                 if (level_different.Checked)
                     level_different.Checked = false;
@@ -365,7 +367,7 @@ namespace Snake_v1._2
         private void OnLevelDifferentClick(object sender, EventArgs e)
         {
             if (level_different.Checked &&
-                MessageBox.Show("将会重置游戏，且当前记录不会保存，确认继续？", "游戏提示", MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
+                MessageBox.Show(langRec.GetString("restart_unsafe_go"), langRec.GetString("tip_app"), MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
             {
                 if (level_easy.Checked)
                     level_easy.Checked = false;
@@ -405,7 +407,7 @@ namespace Snake_v1._2
 
         private void OnExitGameClick(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are You Sure？", "Game Tips", MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
+            if (MessageBox.Show(langRec.GetString("exit_game_go_app"), langRec.GetString("tip_app"), MessageBoxButtons.OKCancel, 0) == DialogResult.OK)
                 Close();
         }
 
@@ -415,7 +417,7 @@ namespace Snake_v1._2
         }
         private void OnMenuMouseLeave(object sender, EventArgs e)
         {
-            if (snake.Death())
+            if (!snake.Death())
                 TimerStart();
         }
 
