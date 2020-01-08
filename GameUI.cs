@@ -38,7 +38,7 @@ namespace Snake_v1._2
         private Hunter hunter;//猎人
         private Snake snake;//蛇
         private Props props;//道具
-        private PropsEvent Event;//道具事件
+        //private PropsEvent Event;//道具事件
 
         //设置游戏资源
         public int column = 21, row = 21;//横行和纵行
@@ -126,13 +126,12 @@ namespace Snake_v1._2
             props.product_time = props_producted_times;//道具每次产生时间
             props.area = props_area;//道具每次产生离蛇范围，越大道具离蛇的范围将会扩大
             props.Clear();
+            //PropsEvent
+            props.Effect += Effective;
+            props.Effect += DrawPropsDis;
 
             //时间开启
             TimerStart();
-
-            //PropsEvent
-            Event += Effective;
-            Event += DrawPropsDis;
 
             //文字组件
             game_money = 0;
@@ -248,7 +247,7 @@ namespace Snake_v1._2
 
             //道具产生
             props.Producted(snake);//到时间道具产生
-            props.Eat(snake, Event);//判断是否吃到食物
+            props.Eat(snake);//判断是否吃到食物
 
             //处理判断结束条件
             if (hunter.Catched(snake))//检查是否被猎人捉到
@@ -421,7 +420,7 @@ namespace Snake_v1._2
         {
             if (!File.Exists("..\\..\\Resource\\User.txt"))
                 File.WriteAllText("..\\..\\Resource\\User.txt", "难度  等级  用时\n");
-
+            
             string file = "";
             file += column == 21 ? "简单" : column == 31 ? "一般" : "困难";
             file += "  ";
@@ -429,7 +428,26 @@ namespace Snake_v1._2
             file += "      ";
             file += system_time;
             file += '\n';
-            File.AppendAllText("..\\..\\Resource\\User.txt", file);
+            //File.AppendAllText("..\\..\\Resource\\User.txt", file);
+
+            //确定行数，只保存最近五行
+            int file_length = 1;
+            string rec_line = "";//早前记录
+            StreamReader sr = new StreamReader("..\\..\\Resource\\User.txt");
+            string file_line = sr.ReadLine();
+            if (file_line.Equals("难度  等级  用时"))
+                file_line = sr.ReadLine();
+            while (file_line != null && file_length < 5)
+            {
+                file_length++;
+                rec_line += (file_line + "\n");
+                file_line = sr.ReadLine();
+            }
+            sr.Close();
+            file += rec_line;
+            string total_file = "难度  等级  用时\n";
+            total_file += file;
+            File.WriteAllText("..\\..\\Resource\\User.txt", total_file);
         }
     }
 }

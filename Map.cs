@@ -154,6 +154,7 @@ namespace Snake_v1._2
             for (int i = 0; i <= column + 1; i++)//x
                 for (int j = 0; j <= row + 1; j++)//y
                     maze[i][j] = wall;
+            maze[x_num][y_num] = way;
             block_row = new List<int>();
             block_column = new List<int>();
             block_direct = new List<Direction>();
@@ -177,22 +178,22 @@ namespace Snake_v1._2
         private int Count()
         {
             int cnt = 0;
-            if (x_num + 1 <= column)//碰到墙壁，则取消入列
+            if (x_num + 1 <= column && maze[x_num + 1][y_num] != way)//碰到墙壁，则取消入列
             {
                 PushToList(x_num + 1, y_num, Direction.Right);
                 cnt++;
             }
-            if (y_num + 1 <= row)
+            if (y_num + 1 <= row && maze[x_num][y_num + 1] != way)
             {
                 PushToList(x_num, y_num + 1, Direction.Down);
                 cnt++;
             }
-            if (x_num - 1 >= 1)
+            if (x_num - 1 >= 1 && maze[x_num - 1][y_num] != way)
             {
                 PushToList(x_num - 1, y_num, Direction.Left);
                 cnt++;
             }
-            if (y_num - 1 >= 1)
+            if (y_num - 1 >= 1 && maze[x_num][y_num - 1] != way)
             {
                 PushToList(x_num, y_num - 1, Direction.UP);
                 cnt++;

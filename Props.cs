@@ -94,6 +94,7 @@ namespace Snake_v1._2
     class Props:IDraw
     {
         //字段
+        public PropsEvent Effect;
         private readonly List<Prop> props;
         public int current_time;//需要与gametime同步
         public int show_time = 0;
@@ -147,7 +148,7 @@ namespace Snake_v1._2
         /// 判断小蛇是否吃到了道具
         /// </summary>
         /// <param name="snake">小蛇</param>
-        public bool Eat(Snake snake, PropsEvent Effect)
+        public bool Eat(Snake snake)
         {
             for(int i = 0; i < props.Count; i++)
                 if (props[i].location == snake.Location)
